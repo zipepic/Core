@@ -29,13 +29,15 @@
     </dependency>
   </dependencies>
 
-  <build>
-    <plugins>
-      <plugin>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-maven-plugin</artifactId>
-      </plugin>
-    </plugins>
-  </build>
+  <distributionManagement>
+    <snapshotRepository>
+      <id>nexusdeploymentrepo</id>
+      <url>http://localhost:8081/repository/maven-snapshots</url>
+    </snapshotRepository>
+    <repository>
+      <id>nexusdeploymentrepo</id>
+      <url>http://localhost:8081/repository/maven-releases</url>
+    </repository>
+  </distributionManagement>
 
 </project>
