@@ -8,4 +8,5 @@ import lombok.Data;
 public class ApplicationCreatedEvent {
   private String clientId;
   private String secret;
+  private String code;
 }
