@@ -7,4 +7,5 @@ import lombok.Data;
 @Builder
 public class ApplicationLoggedInEvent {
   private String clientId;
+  private String refreshToken;
 }
