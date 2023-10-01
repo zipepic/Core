@@ -1,12 +1,14 @@
-package com.project.core.events;
+package com.project.core.commands.user;
 
 import lombok.Builder;
 import lombok.Data;
+import org.axonframework.modelling.command.TargetAggregateIdentifier;
 
 import java.util.Date;
 @Data
 @Builder
-public class UserProfileCreatedEvent {
+public class CreateUserProfileCommand {
+  @TargetAggregateIdentifier
   private String userId;
   private String userName;
   private String passwordHash;

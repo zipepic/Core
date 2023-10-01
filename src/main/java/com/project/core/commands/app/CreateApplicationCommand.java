@@ -1,15 +1,13 @@
-package com.project.core.commands;
+package com.project.core.commands.app;
 
 import lombok.Builder;
 import lombok.Data;
 import org.axonframework.modelling.command.TargetAggregateIdentifier;
 @Data
 @Builder
-public class LoginApplicationCommand {
+//TODO refactoring this class(delete unused code) and sort classes by package(application, user)
+public class CreateApplicationCommand {
   @TargetAggregateIdentifier
   private String clientId;
   private String secret;
-  private String grantType;
-  private String code;
-  private String redirectUrl;
 }
