@@ -1,4 +1,4 @@
-package com.project.core.events;
+package com.project.core.events.user;
 
 import lombok.Builder;
 import lombok.Data;

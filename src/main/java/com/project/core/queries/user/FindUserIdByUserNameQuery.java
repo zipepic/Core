@@ -1,4 +1,4 @@
-package com.project.core.queries;
+package com.project.core.queries.user;
 
 import lombok.Builder;
 import lombok.Data;
