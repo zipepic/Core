@@ -9,6 +9,5 @@ import org.axonframework.modelling.command.TargetAggregateIdentifier;
 public class UseAuthorizationCodeCommand {
   @TargetAggregateIdentifier
   private String code;
-  private String userId;
-  private String clientId;
+
 }
