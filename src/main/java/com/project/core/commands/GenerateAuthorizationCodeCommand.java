@@ -13,8 +13,6 @@ public class GenerateAuthorizationCodeCommand {
   private String code;
   private String userId;
   private String clientId;
-  private Date expiresAt;
   private String scope;
-  private String status;
   private String sessionId;
 }
