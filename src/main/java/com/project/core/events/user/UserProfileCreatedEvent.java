@@ -11,5 +11,6 @@ public class UserProfileCreatedEvent {
   private String userName;
   private String passwordHash;
   private String userStatus;
+  private String role;
   private Date createdAt;
 }
