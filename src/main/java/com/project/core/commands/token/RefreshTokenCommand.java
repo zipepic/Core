@@ -1,4 +1,4 @@
-package com.project.core.commands;
+package com.project.core.commands.token;
 
 import lombok.Builder;
 import lombok.Data;
@@ -6,8 +6,8 @@ import org.axonframework.modelling.command.TargetAggregateIdentifier;
 
 @Data
 @Builder
-public class UseAuthorizationCodeCommand {
+public class RefreshTokenCommand {
   @TargetAggregateIdentifier
-  private String code;
-
+  private String tokenId;
+  private String refreshToken;
 }

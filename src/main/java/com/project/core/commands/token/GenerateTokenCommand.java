@@ -1,18 +1,20 @@
-package com.project.core.commands;
+package com.project.core.commands.token;
 
+import com.project.core.commands.ResourceServerDTO;
 import lombok.Builder;
 import lombok.Data;
 import org.axonframework.modelling.command.TargetAggregateIdentifier;
 
-import java.util.Date;
+import java.util.List;
 
 @Data
 @Builder
-public class GenerateAuthorizationCodeCommand {
+public class GenerateTokenCommand {
   @TargetAggregateIdentifier
-  private String code;
+  private String tokenId;
   private String userId;
   private String clientId;
   private String scope;
-  private String sessionId;
+
+  private List<ResourceServerDTO> resourceServerDTOList;
 }
