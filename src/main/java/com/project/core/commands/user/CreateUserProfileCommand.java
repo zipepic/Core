@@ -12,6 +12,4 @@ public class CreateUserProfileCommand {
   private String userId;
   private String userName;
   private String passwordHash;
-  private String userStatus;
-  private Date createdAt;
 }
