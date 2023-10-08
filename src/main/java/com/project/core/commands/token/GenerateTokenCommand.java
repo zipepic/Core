@@ -15,6 +15,5 @@ public class GenerateTokenCommand {
   private String userId;
   private String clientId;
   private String scope;
-
   private List<ResourceServerDTO> resourceServerDTOList;
 }
