@@ -1,4 +1,4 @@
-package com.project.core.commands;
+package com.project.core.commands.user;
 
 import lombok.Builder;
 import lombok.Data;
@@ -6,9 +6,8 @@ import org.axonframework.modelling.command.TargetAggregateIdentifier;
 
 @Data
 @Builder
-public class CreateResourceServerCommand {
+public class GenerateRefreshTokenForUserProfileCommand {
   @TargetAggregateIdentifier
-  private String resourceServerName;
-  private String secret;
+  private String userId;
 
 }
