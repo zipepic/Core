@@ -1,4 +1,4 @@
-package com.project.core.commands;
+package com.project.core.commands.resourceserver;
 
 import lombok.Builder;
 import lombok.Data;

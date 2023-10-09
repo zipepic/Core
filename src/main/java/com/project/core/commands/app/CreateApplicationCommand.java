@@ -5,7 +5,6 @@ import lombok.Data;
 import org.axonframework.modelling.command.TargetAggregateIdentifier;
 @Data
 @Builder
-//TODO refactoring this class(delete unused code) and sort classes by package(application, user)
 public class CreateApplicationCommand {
   @TargetAggregateIdentifier
   private String clientId;
