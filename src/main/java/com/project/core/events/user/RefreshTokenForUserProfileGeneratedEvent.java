@@ -8,4 +8,5 @@ import lombok.Data;
 public class RefreshTokenForUserProfileGeneratedEvent {
   private String userId;
   private String refreshToken;
+  private String tokenId;
 }

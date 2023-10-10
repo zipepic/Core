@@ -7,5 +7,5 @@ import lombok.Data;
 @Builder
 public class ValidateRefreshTokenForUserProfileQuery {
   private String userId;
-  private String refreshToken;
+  private String tokenId;
 }
