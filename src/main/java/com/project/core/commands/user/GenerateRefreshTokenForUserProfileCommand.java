@@ -9,5 +9,5 @@ import org.axonframework.modelling.command.TargetAggregateIdentifier;
 public class GenerateRefreshTokenForUserProfileCommand {
   @TargetAggregateIdentifier
   private String userId;
-
+  private String tokenType;
 }
