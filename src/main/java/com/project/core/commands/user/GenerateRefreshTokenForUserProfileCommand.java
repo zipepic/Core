@@ -1,12 +1,13 @@
-package com.project.core.commands;
+package com.project.core.commands.user;
 
 import lombok.Builder;
 import lombok.Data;
 import org.axonframework.modelling.command.TargetAggregateIdentifier;
+
 @Data
 @Builder
-public class CreateApplicationCommand {
+public class GenerateRefreshTokenForUserProfileCommand {
   @TargetAggregateIdentifier
-  private String clientId;
-  private String secret;
+  private String userId;
+  private String tokenType;
 }
