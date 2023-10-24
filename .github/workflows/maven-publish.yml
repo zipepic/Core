@@ -53,11 +53,11 @@ jobs:
         run: ls -R
   publish-project:
     runs-on: ubuntu-latest
+    need:
+      - build_test
     permissions:
       contents: read
       packages: write
-    need:
-      - build_test
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-java@v3
