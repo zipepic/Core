@@ -51,7 +51,7 @@ jobs:
           name: Package
       - name: Test artifact download
         run: ls -R
-  publish:
+  publish-project:
     runs-on: ubuntu-latest
     permissions:
       contents: read
