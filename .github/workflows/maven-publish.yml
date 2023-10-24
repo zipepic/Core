@@ -47,7 +47,7 @@ jobs:
       - name: Download artifact
         uses: actions/download-artifact@v3
         with:
-          name: Package
+          name: Set up JDK 17
       - name: Test artifact download
         run: ls -R
 #  publish-project:
