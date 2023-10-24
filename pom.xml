@@ -62,14 +62,20 @@
     </dependency>
   </dependencies>
 
+<!--  <distributionManagement>-->
+<!--    <snapshotRepository>-->
+<!--      <id>nexusdeploymentrepo</id>-->
+<!--      <url>http://localhost:8081/repository/maven-snapshots</url>-->
+<!--    </snapshotRepository>-->
+<!--    <repository>-->
+<!--      <id>nexusdeploymentrepo</id>-->
+<!--      <url>http://localhost:8081/repository/maven-releases</url>-->
+<!--    </repository>-->
+<!--  </distributionManagement>-->
   <distributionManagement>
-    <snapshotRepository>
-      <id>nexusdeploymentrepo</id>
-      <url>http://localhost:8081/repository/maven-snapshots</url>
-    </snapshotRepository>
     <repository>
-      <id>nexusdeploymentrepo</id>
-      <url>http://localhost:8081/repository/maven-releases</url>
+      <id>github</id> <!-- Идентификатор сервера -->
+      <url>https://maven.pkg.github.com/zipepic/Core</url> <!-- Замените на свой GitHub пользователь и репозиторий -->
     </repository>
   </distributionManagement>
 
