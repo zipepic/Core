@@ -38,12 +38,12 @@ jobs:
         with:
           name: Package
           path: staging
-      - name: Download artifact
-        uses: actions/download-artifact@v3
-        with:
-          name: Set up JDK 17
-      - name: Test artifact download
-        run: ls -R
+#      - name: Download artifact
+#        uses: actions/download-artifact@v3
+#        with:
+#          name: Set up JDK 17
+#      - name: Test artifact download
+#        run: ls -R
 #  release-project:
 #    name: Release project
 #    runs-on: ubuntu-latest
