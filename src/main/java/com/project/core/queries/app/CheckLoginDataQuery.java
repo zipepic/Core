@@ -8,4 +8,6 @@ import lombok.Data;
 public class CheckLoginDataQuery {
   private String clientId;
   private String secret;
+
+
 }
