@@ -1,4 +1,4 @@
-package com.project.core.events.user;
+package com.project.core.commands.user;
 
 import io.jsonwebtoken.Claims;
 import lombok.Builder;
@@ -11,5 +11,4 @@ public class RefreshAccessTokenForUserProfileCommand {
   @TargetAggregateIdentifier
   private String userId;
   private String refreshToken;
-  private Claims claims;
 }
