@@ -8,6 +8,4 @@ import lombok.Data;
 public class RefreshTokenForUserProfileGeneratedEvent {
   private String userId;
   private String tokenId;
-  @Deprecated
-  private String refreshToken;
 }
