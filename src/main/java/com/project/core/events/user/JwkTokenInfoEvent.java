@@ -9,4 +9,5 @@ public class JwkTokenInfoEvent {
   private String userId;
   private String kid;
   private String publicKey;
+  private String lastTokenId;
 }

@@ -5,7 +5,7 @@ import lombok.Data;
 
 @Data
 @Builder
-public class RefreshTokenForUserProfileGeneratedEvent {
+public class JwtTokenInfoEvent {
   private String userId;
   private String tokenId;
   private String refreshToken;
