@@ -1,6 +1,9 @@
 package tokenlib.util;
 
+import com.nimbusds.jose.jwk.JWK;
+import org.axonframework.queryhandling.QueryGateway;
 import tokenlib.util.jwk.AppConstants;
+import tokenlib.util.jwk.Jwk;
 import tokenlib.util.jwk.RSAParser;
 import tokenlib.util.tokenenum.TokenFields;
 import com.nimbusds.jose.JOSEException;
@@ -12,7 +15,6 @@ import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtBuilder;
 import io.jsonwebtoken.Jwts;
 
-import java.io.File;
 import java.io.IOException;
 import java.security.KeyPair;
 import java.security.KeyPairGenerator;
@@ -21,15 +23,33 @@ import java.security.interfaces.RSAPublicKey;
 import java.text.ParseException;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class JwkManager implements JwkProvider{
   private static final String JWK_FILE_PATH = "/Users/xzz1p/Documents/MySpring/TEST_PROJECT/AuthenticationServer/jwk.json";
+  private JwkSetLoader jwkSetLoader;
+  private QueryGateway queryGateway;
+
+  public JwkManager(JwkSetLoader jwkSetLoader, QueryGateway queryGateway) {
+    this.jwkSetLoader = jwkSetLoader;
+    this.queryGateway = queryGateway;
+  }
 
   @Override
   public Claims extractClaimsFromToken(String jwtToken) throws ParseException, IOException, JOSEException {
+    //TODO optimize this
     String kid = extractKidFromTokenHeader(jwtToken);
-    var jwk = loadJwkSetFromSource().getKeyByKeyId(kid).toPublicJWK();
+    var jwks = loadJwkSetFromSource(queryGateway).stream().map(x->{
+      try {
+        return JWK.parse(x);
+      } catch (ParseException e) {
+        e.printStackTrace();
+      }
+      return null;
+    }).collect(Collectors.toList());
+    var jwk =jwks.stream().filter(x->x.getKeyID().equals(kid)).findFirst().orElseThrow(()->new IllegalArgumentException("Invalid kid"));
     RSAKey rsaKey = RSAParser.parseRSAKeyFromJson(jwk.toJSONString());
 
     return Jwts.parser()
@@ -59,8 +79,8 @@ public class JwkManager implements JwkProvider{
   }
 
   @Override
-  public JWKSet loadJwkSetFromSource() throws IOException, ParseException {
-    return JWKSet.load(new File(JWK_FILE_PATH)).toPublicJWKSet();
+  public List<String> loadJwkSetFromSource(QueryGateway queryGateway){
+    return jwkSetLoader.loadJwkSetFromSource(queryGateway);
   }
 
   @Override
