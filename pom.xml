@@ -16,6 +16,7 @@
   <properties>
     <java.version>17</java.version>
   </properties>
+
   <dependencies>
     <dependency>
       <groupId>io.jsonwebtoken</groupId>
@@ -29,10 +30,10 @@
       <scope>runtime</scope>
     </dependency>
     <dependency>
-    <groupId>io.jsonwebtoken</groupId>
-    <artifactId>jjwt-jackson</artifactId>
-    <version>0.11.2</version>
-    <scope>runtime</scope>
+      <groupId>io.jsonwebtoken</groupId>
+      <artifactId>jjwt-jackson</artifactId>
+      <version>0.11.2</version>
+      <scope>runtime</scope>
     </dependency>
     <dependency>
       <groupId>org.springframework.boot</groupId>
@@ -64,6 +65,11 @@
       <groupId>com.nimbusds</groupId>
       <artifactId>nimbus-jose-jwt</artifactId>
       <version>7.9</version>
+    </dependency>
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-databind</artifactId>
+      <version>2.15.3</version>
     </dependency>
   </dependencies>
 
