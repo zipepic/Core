@@ -1,13 +1,11 @@
 package tokenlib.util;
 
-import com.nimbusds.jose.jwk.JWK;
-import com.nimbusds.jose.jwk.JWKSet;
 import org.axonframework.queryhandling.QueryGateway;
-import tokenlib.util.jwk.Jwk;
+import tokenlib.util.jwk.SimpleJWK;
 
 import java.util.List;
 
 @FunctionalInterface
 public interface JwkSetLoader {
-  List<String> loadJwkSetFromSource(QueryGateway queryGateway);
+  List<SimpleJWK> loadJwkSetFromSource(QueryGateway queryGateway);
 }

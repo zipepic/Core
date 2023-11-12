@@ -14,28 +14,24 @@ import java.util.List;
 public class TokenProcessorFactory {
   private final SecretKeySpec secret;
   private final QueryGateway queryGateway;
+  private JwkSetLoader jwkSetLoader;
 
   public TokenProcessorFactory(String secret, QueryGateway queryGateway) {
     this.queryGateway = queryGateway;
     byte[] secretKeyBytes = Base64.getDecoder().decode(secret);
     this.secret = new SecretKeySpec(secretKeyBytes, SignatureAlgorithm.HS256.getJcaName());
   }
-  private JwkSetLoader loadJwkSetFromSource() {
-    //TODO optimize this
-    return new JwkSetLoader() {
-      @Override
-      public List<String> loadJwkSetFromSource(QueryGateway queryGateway)  {
-        GenericQueryMessage<String,List<JWK>> query = new GenericQueryMessage<>("fetchJwkSet","fetchJwkSet", ResponseTypes.multipleInstancesOf(JWK.class));
-        return queryGateway.query(query,ResponseTypes.multipleInstancesOf(String.class)).join();
-      }
-    };
+  public TokenProcessorFactory(QueryGateway queryGateway,JwkSetLoader jwkSetLoader){
+    this.queryGateway = queryGateway;
+    this.jwkSetLoader = jwkSetLoader;
+    this.secret = null;
   }
   public TokenProcessorContext generate(TokenTypes type){
     switch (type) {
       case JWT:
         return new TokenProcessorContext(new JwtManager(secret));
       case JWK:
-        return new TokenProcessorContext(new JwkManager(loadJwkSetFromSource(),queryGateway));
+        return new TokenProcessorContext(new JwkManager(jwkSetLoader,queryGateway));
       default:
         throw new IllegalArgumentException("Unknown token type");
     }
@@ -45,7 +41,7 @@ public class TokenProcessorFactory {
       case 0:
         return new TokenProcessorContext(new JwtManager(secret));
       case 1:
-        return new TokenProcessorContext(new JwkManager(loadJwkSetFromSource(),queryGateway));
+        return new TokenProcessorContext(new JwkManager(jwkSetLoader,queryGateway));
       default:
         throw new IllegalArgumentException("Unknown token type");
     }

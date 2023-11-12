@@ -3,12 +3,11 @@ package tokenlib.util;
 import com.nimbusds.jose.jwk.JWK;
 import org.axonframework.queryhandling.QueryGateway;
 import tokenlib.util.jwk.AppConstants;
-import tokenlib.util.jwk.Jwk;
 import tokenlib.util.jwk.RSAParser;
+import tokenlib.util.jwk.SimpleJWK;
 import tokenlib.util.tokenenum.TokenFields;
 import com.nimbusds.jose.JOSEException;
 import com.nimbusds.jose.JWSObject;
-import com.nimbusds.jose.jwk.JWKSet;
 import com.nimbusds.jose.jwk.RSAKey;
 import com.project.core.events.user.JwkTokenInfoEvent;
 import io.jsonwebtoken.Claims;
@@ -25,10 +24,8 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 public class JwkManager implements JwkProvider{
-  private static final String JWK_FILE_PATH = "/Users/xzz1p/Documents/MySpring/TEST_PROJECT/AuthenticationServer/jwk.json";
   private JwkSetLoader jwkSetLoader;
   private QueryGateway queryGateway;
 
@@ -39,18 +36,14 @@ public class JwkManager implements JwkProvider{
 
   @Override
   public Claims extractClaimsFromToken(String jwtToken) throws ParseException, IOException, JOSEException {
-    //TODO optimize this
+
     String kid = extractKidFromTokenHeader(jwtToken);
-    var jwks = loadJwkSetFromSource(queryGateway).stream().map(x->{
-      try {
-        return JWK.parse(x);
-      } catch (ParseException e) {
-        e.printStackTrace();
-      }
-      return null;
-    }).collect(Collectors.toList());
-    var jwk =jwks.stream().filter(x->x.getKeyID().equals(kid)).findFirst().orElseThrow(()->new IllegalArgumentException("Invalid kid"));
-    RSAKey rsaKey = RSAParser.parseRSAKeyFromJson(jwk.toJSONString());
+
+    var jwk = loadJwkSetFromSource(queryGateway).stream()
+      .filter(x->x.getKid().equals(kid))
+      .findFirst().orElseThrow(()->new IllegalArgumentException("Public key "));
+
+    RSAKey rsaKey = RSAParser.parseRSAKeyFromSimpleJWK(jwk);
 
     return Jwts.parser()
       .setSigningKey(rsaKey.toRSAPublicKey())
@@ -79,7 +72,7 @@ public class JwkManager implements JwkProvider{
   }
 
   @Override
-  public List<String> loadJwkSetFromSource(QueryGateway queryGateway){
+  public List<SimpleJWK> loadJwkSetFromSource(QueryGateway queryGateway){
     return jwkSetLoader.loadJwkSetFromSource(queryGateway);
   }
 
