@@ -1,10 +1,11 @@
 package tokenlib.util;
 
-import com.nimbusds.jose.jwk.JWK;
 import org.axonframework.queryhandling.QueryGateway;
 import tokenlib.util.jwk.AppConstants;
 import tokenlib.util.jwk.RSAParser;
 import tokenlib.util.jwk.SimpleJWK;
+import tokenlib.util.lamdas.EventClassProvider;
+import tokenlib.util.lamdas.JwkSetLoader;
 import tokenlib.util.tokenenum.TokenFields;
 import com.nimbusds.jose.JOSEException;
 import com.nimbusds.jose.JWSObject;
@@ -27,10 +28,12 @@ import java.util.Map;
 
 public class JwkManager implements JwkProvider{
   private JwkSetLoader jwkSetLoader;
+  private EventClassProvider eventClassProvider;
   private QueryGateway queryGateway;
 
-  public JwkManager(JwkSetLoader jwkSetLoader, QueryGateway queryGateway) {
+  public JwkManager(JwkSetLoader jwkSetLoader,EventClassProvider eventClassProvider, QueryGateway queryGateway) {
     this.jwkSetLoader = jwkSetLoader;
+    this.eventClassProvider = eventClassProvider;
     this.queryGateway = queryGateway;
   }
 
@@ -41,7 +44,7 @@ public class JwkManager implements JwkProvider{
 
     var jwk = loadJwkSetFromSource(queryGateway).stream()
       .filter(x->x.getKid().equals(kid))
-      .findFirst().orElseThrow(()->new IllegalArgumentException("Public key "));
+      .findFirst().orElseThrow(()->new IllegalArgumentException("Public key not found"));
 
     RSAKey rsaKey = RSAParser.parseRSAKeyFromSimpleJWK(jwk);
 
@@ -91,7 +94,7 @@ public class JwkManager implements JwkProvider{
         .signWith(KeyPair.getPrivate()).compact();
   }
   @Override
-  public Class<JwkTokenInfoEvent> getEventClass() {
-    return JwkTokenInfoEvent.class;
+  public Class<?> getEventClass() {
+    return eventClassProvider.getEventClass();
   }
 }

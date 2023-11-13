@@ -6,6 +6,7 @@ import com.project.core.events.user.JwtTokenInfoEvent;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtBuilder;
 import io.jsonwebtoken.Jwts;
+import tokenlib.util.lamdas.EventClassProvider;
 
 import javax.crypto.spec.SecretKeySpec;
 import java.io.IOException;
@@ -17,8 +18,10 @@ import java.util.Map;
 
 public class JwtManager implements JwtProvider{
   private final SecretKeySpec secretKey;
-  public JwtManager(SecretKeySpec secretKey) {
+  private EventClassProvider eventClassProvider;
+  public JwtManager(SecretKeySpec secretKey,EventClassProvider eventClassProvider) {
     this.secretKey = secretKey;
+    this.eventClassProvider = eventClassProvider;
   }
   @Override
   public Claims extractClaimsFromToken(String jwtToken) throws ParseException, IOException, JOSEException {
@@ -45,7 +48,7 @@ public class JwtManager implements JwtProvider{
     return tokenMap;
   }
   @Override
-  public Class<JwtTokenInfoEvent> getEventClass() {
-    return JwtTokenInfoEvent.class;
+  public Class<?> getEventClass() {
+    return eventClassProvider.getEventClass();
   }
 }
