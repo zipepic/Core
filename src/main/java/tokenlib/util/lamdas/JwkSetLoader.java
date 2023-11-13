@@ -1,4 +1,4 @@
-package tokenlib.util;
+package tokenlib.util.lamdas;
 
 import org.axonframework.queryhandling.QueryGateway;
 import tokenlib.util.jwk.SimpleJWK;
