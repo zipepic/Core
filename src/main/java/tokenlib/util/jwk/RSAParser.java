@@ -20,6 +20,9 @@ public class RSAParser {
 
   }
   public static RSAKey parseRSAKeyFromSimpleJWK(SimpleJWK jwk) throws JsonProcessingException {
+    if(jwk.getKty() == null || jwk.getKid() == null || jwk.getN() == null || jwk.getE() == null){
+      throw new JsonProcessingException("Invalid SimpleJwk"){};
+    }
     RSAKey rsaKey = new RSAKey.Builder(
       new Base64URL(jwk.getN()),
       new Base64URL(jwk.getE()))

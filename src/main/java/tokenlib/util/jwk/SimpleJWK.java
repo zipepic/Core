@@ -8,33 +8,28 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Data
 public class SimpleJWK {
-  @JsonProperty("kty")
+  @JsonProperty(value = "kty",index = 1)
   private String kty;
 
-  @JsonProperty("kid")
+  @JsonProperty(value = "kid",index = 2)
   private String kid;
 
-  @JsonProperty("e")
+  @JsonProperty(value = "e",index = 4)
   private String e;
 
-  @JsonProperty("n")
+  @JsonProperty(value ="n", index = 3)
   private String n;
 
-  public static SimpleJWK parse(String jwk) {
+  public static SimpleJWK parse(String jwk) throws JsonProcessingException {
     ObjectMapper objectMapper = new ObjectMapper();
-    try {
       return objectMapper.readValue(jwk, SimpleJWK.class);
-    } catch (JsonProcessingException ex) {
-      throw new RuntimeException(ex);
-    }
   }
-  public String toJSONString() {
-    ObjectMapper objectMapper = new ObjectMapper();
-    try {
-      return objectMapper.writeValueAsString(this);
-    } catch (JsonProcessingException ex) {
-      throw new RuntimeException("Error converting SimpleJwk to JSON string", ex);
+  public String toJSONString() throws JsonProcessingException {
+    if(kty == null || kid == null || n == null || e == null){
+      throw new JsonProcessingException("Invalid SimpleJwk"){};
     }
+    ObjectMapper objectMapper = new ObjectMapper();
+      return objectMapper.writeValueAsString(this);
   }
 }
 
