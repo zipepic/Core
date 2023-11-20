@@ -109,7 +109,7 @@ import java.util.Map;
  *   <li>{@link tokenlib.util.jwk.AppConstants}</li>
  * </ul>
  */
-public class JwkManager implements JwkProvider {
+public final class JwkManager implements JwkProvider {
   // The loader for obtaining JWK sets
   private JwkSetLoader jwkSetLoader;
   // The provider for obtaining the event class

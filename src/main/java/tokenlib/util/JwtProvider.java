@@ -2,6 +2,6 @@ package tokenlib.util;
 
 import io.jsonwebtoken.JwtBuilder;
 
-interface JwtProvider extends TokenProcessingStrategy {
+sealed interface JwtProvider extends TokenProcessingStrategy permits JwtManager{
   String generateSignedCompactToken(JwtBuilder jwt, String tokenId);
 }

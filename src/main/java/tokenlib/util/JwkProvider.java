@@ -7,7 +7,7 @@ import java.security.KeyPair;
 import java.security.NoSuchAlgorithmException;
 import java.text.ParseException;
 
-interface JwkProvider extends TokenProcessingStrategy, JwkSetLoader {
+sealed interface JwkProvider extends TokenProcessingStrategy, JwkSetLoader permits JwkManager {
   KeyPair obtainKeyContainer() throws NoSuchAlgorithmException;
     String extractKidFromTokenHeader(String jwtToken) throws ParseException;
   String generateSignedCompactToken(JwtBuilder jwt, String kid, KeyPair KeyPair);

@@ -87,7 +87,7 @@ import java.util.Map;
  *   <li>{@link tokenlib.util.lamdas.EventClassProvider}</li>
  * </ul>
  */
-public class JwtManager implements JwtProvider {
+public final class JwtManager implements JwtProvider {
   // The secret key for signing JWTs
   private final SecretKeySpec secretKey;
   // The provider for obtaining the event class
