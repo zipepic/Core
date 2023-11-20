@@ -5,7 +5,7 @@ import lombok.Data;
 
 @Data
 @Builder
-public class JwkTokenInfoEvent {
+public final class JwkTokenInfoEvent {
   private String userId;
   private String kid;
   private String publicKey;

@@ -5,7 +5,7 @@ import lombok.Data;
 
 @Data
 @Builder
-public class CheckLoginDataQuery {
+public final class CheckLoginDataQuery {
   private String clientId;
   private String secret;
 }

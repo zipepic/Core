@@ -6,7 +6,7 @@ import lombok.Data;
 import java.util.Date;
 @Data
 @Builder
-public class UserProfileCreatedEvent {
+public final class UserProfileCreatedEvent {
   private String userId;
   private String userName;
   private String passwordHash;

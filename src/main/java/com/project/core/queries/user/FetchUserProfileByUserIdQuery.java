@@ -5,6 +5,6 @@ import lombok.Data;
 
 @Data
 @Builder
-public class FetchUserProfileByUserIdQuery {
+public final class FetchUserProfileByUserIdQuery {
   private String userId;
 }

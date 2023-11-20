@@ -5,5 +5,5 @@ import lombok.Data;
 
 @Data
 @Builder
-public class FetchJwkSet {
+public final class FetchJwkSet {
 }

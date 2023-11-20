@@ -7,7 +7,7 @@ import org.axonframework.modelling.command.TargetAggregateIdentifier;
 import java.util.Date;
 @Data
 @Builder
-public class CreateUserProfileCommand {
+public final class CreateUserProfileCommand {
   @TargetAggregateIdentifier
   private String userId;
   private String userName;

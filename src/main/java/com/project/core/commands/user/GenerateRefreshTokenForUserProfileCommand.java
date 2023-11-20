@@ -6,7 +6,7 @@ import org.axonframework.modelling.command.TargetAggregateIdentifier;
 
 @Data
 @Builder
-public class GenerateRefreshTokenForUserProfileCommand {
+public final class GenerateRefreshTokenForUserProfileCommand {
   @TargetAggregateIdentifier
   private String userId;
   private String tokenType;

@@ -5,7 +5,7 @@ import lombok.Data;
 
 @Data
 @Builder
-public class AuthorizationCodeUsedEvent {
+public final class AuthorizationCodeUsedEvent {
   private String code;
   private String status;
 }
