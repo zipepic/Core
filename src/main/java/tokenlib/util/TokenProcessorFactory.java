@@ -8,7 +8,7 @@ import io.jsonwebtoken.SignatureAlgorithm;
 import javax.crypto.spec.SecretKeySpec;
 import java.util.Base64;
 
-public class TokenProcessorFactory extends AbstractTokenFactory {
+public final class TokenProcessorFactory extends AbstractTokenFactory {
   private final SecretKeySpec secret;
   private final QueryGateway queryGateway;
   private JwkSetLoader jwkSetLoader;

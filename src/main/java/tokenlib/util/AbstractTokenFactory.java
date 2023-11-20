@@ -2,7 +2,7 @@ package tokenlib.util;
 
 import tokenlib.util.tokenenum.TokenTypes;
 
-public abstract class AbstractTokenFactory {
+public sealed abstract class AbstractTokenFactory permits TokenProcessorFactory {
   public TokenProcessorContext generate(Integer type){
     switch (type) {
       case 0:
