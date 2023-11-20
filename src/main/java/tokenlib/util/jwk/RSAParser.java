@@ -5,7 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.nimbusds.jose.jwk.RSAKey;
 import com.nimbusds.jose.util.Base64URL;
 
-public class RSAParser {
+public final class RSAParser {
   public static RSAKey parseRSAKeyFromJson(String json) throws JsonProcessingException {
 
       ObjectMapper objectMapper = new ObjectMapper();

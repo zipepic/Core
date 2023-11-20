@@ -7,7 +7,7 @@ import lombok.Data;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Data
-public class SimpleJWK {
+public final class SimpleJWK {
   @JsonProperty(value = "kty",index = 1)
   private String kty;
 
