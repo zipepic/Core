@@ -77,7 +77,7 @@ import java.util.Map;
  * }
  * </pre>
  *
- * <p><strong>Author:</strong> [Your Name]</p>
+ * <p><strong>Author:</strong> Konstantin Kokoshnikov</p>
  *
  * <p><strong>See Also:</strong></p>
  * <ul>
