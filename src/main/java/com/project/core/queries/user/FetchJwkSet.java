@@ -5,6 +5,5 @@ import lombok.Data;
 
 @Data
 @Builder
-public final class FindUserIdByUserNameQuery {
-  private String userName;
+public final class FetchJwkSet {
 }

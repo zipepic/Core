@@ -5,7 +5,7 @@ import lombok.Data;
 
 @Data
 @Builder
-public class ApplicationCreatedEvent {
+public final class ApplicationCreatedEvent {
   private String clientId;
   private String secret;
 }

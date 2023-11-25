@@ -6,7 +6,7 @@ import org.axonframework.modelling.command.TargetAggregateIdentifier;
 
 @Data
 @Builder
-public class UseAuthorizationCodeCommand {
+public final class UseAuthorizationCodeCommand {
   @TargetAggregateIdentifier
   private String code;
 

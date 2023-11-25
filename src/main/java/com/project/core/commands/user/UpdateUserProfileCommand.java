@@ -4,12 +4,10 @@ import lombok.Builder;
 import lombok.Data;
 import org.axonframework.modelling.command.TargetAggregateIdentifier;
 
-import java.util.Date;
 @Data
 @Builder
-public final class CreateUserProfileCommand {
+public final class UpdateUserProfileCommand {
   @TargetAggregateIdentifier
   private String userId;
   private String userName;
-  private String passwordHash;
 }

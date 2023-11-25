@@ -8,7 +8,7 @@ import java.util.Date;
 
 @Data
 @Builder
-public class GenerateAuthorizationCodeCommand {
+public final class GenerateAuthorizationCodeCommand {
   @TargetAggregateIdentifier
   private String code;
   private String userId;

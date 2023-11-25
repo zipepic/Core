@@ -5,6 +5,7 @@ import lombok.Data;
 
 @Data
 @Builder
-public final class FindUserIdByUserNameQuery {
+public final class UserProfileLookupQuery {
+  private String userId;
   private String userName;
 }

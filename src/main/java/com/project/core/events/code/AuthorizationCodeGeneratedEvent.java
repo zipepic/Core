@@ -7,7 +7,7 @@ import java.util.Date;
 
 @Data
 @Builder
-public class AuthorizationCodeGeneratedEvent {
+public final class AuthorizationCodeGeneratedEvent {
   private String code;
   private String userId;
   private String clientId;
