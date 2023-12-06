@@ -152,7 +152,7 @@ public class TokenProcessorContext implements TokenOperationHandler, TokenFacade
   public Map<String, String> issueUserTokens(String userId, String tokenId) throws NoSuchAlgorithmException {
     var refresh = Jwts.builder()
       .setSubject(userId)
-      .setIssuer(AppConstants.ISSUER.toString())
+      .setIssuer("http://localhost:8080")
       .setExpiration(new Date(System.currentTimeMillis() + TokenExpiration.ONE_HOUR.getMilliseconds()))
       .setIssuedAt(new Date())
       .addClaims(Map.of(TokenFields.TOKEN_TYPE.getValue(), TokenTypes.REFRESH_TOKEN.getValue()));

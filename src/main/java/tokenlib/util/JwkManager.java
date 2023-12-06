@@ -223,7 +223,7 @@ public final class JwkManager implements JwkProvider {
   @Override
   public String generateSignedCompactToken(JwtBuilder jwt, String kid, KeyPair keyPair) {
     return jwt
-      .setIssuer(AppConstants.ISSUER.toString())
+      .setIssuer("http://localhost:8080")
       .setIssuedAt(new Date())
       .setHeader(Map.of(TokenFields.KID.getValue(), kid))
       .signWith(keyPair.getPrivate()).compact();

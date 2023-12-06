@@ -131,7 +131,7 @@ public final class JwtManager implements JwtProvider {
   @Override
   public String generateSignedCompactToken(JwtBuilder jwt, String tokenId) {
     return jwt
-      .setIssuer(AppConstants.ISSUER.toString())
+      .setIssuer("http://localhost:8080")
       .setIssuedAt(new Date())
       .signWith(secretKey).compact();
   }
