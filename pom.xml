@@ -9,8 +9,8 @@
   <description>Core</description>
   <properties>
     <java.version>17</java.version>
-    <maven.compiler.source>1.8</maven.compiler.source>
-    <maven.compiler.target>1.8</maven.compiler.target>
+    <maven.compiler.source>17</maven.compiler.source>
+    <maven.compiler.target>17</maven.compiler.target>
   </properties>
 
   <dependencies>
@@ -46,11 +46,6 @@
       <groupId>com.google.guava</groupId>
       <artifactId>guava</artifactId>
       <version>32.1.2-jre</version>
-    </dependency>           
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-test</artifactId>
-      <scope>test</scope>
     </dependency>
            
     <dependency>
@@ -71,13 +66,6 @@
       <version>4.13.2</version>
       <scope>test</scope>
     </dependency>
-           
-    <dependency>
-      <groupId>org.testng</groupId>
-      <artifactId>testng</artifactId>
-      <version>RELEASE</version>
-      <scope>test</scope>
-    </dependency>
 
     <dependency>
       <groupId>org.mockito</groupId>
@@ -88,12 +76,12 @@
   </dependencies>
 
 
-  <distributionManagement>
-    <repository>
-      <id>github</id> <!-- Идентификатор сервера -->
-      <name>Github Packages</name>
-      <url>https://maven.pkg.github.com/zipepic/Core</url> <!-- Замените на свой GitHub пользователь и репозиторий -->
-    </repository>
-  </distributionManagement>
+<!--  <distributionManagement>-->
+<!--    <repository>-->
+<!--      <id>github</id> &lt;!&ndash; Идентификатор сервера &ndash;&gt;-->
+<!--      <name>Github Packages</name>-->
+<!--      <url>https://maven.pkg.github.com/zipepic/Core</url> &lt;!&ndash; Замените на свой GitHub пользователь и репозиторий &ndash;&gt;-->
+<!--    </repository>-->
+<!--  </distributionManagement>-->
 
 </project>
