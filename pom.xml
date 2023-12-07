@@ -73,6 +73,12 @@
       <version>1.10.19</version>
       <scope>test</scope>
     </dependency>
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-api</artifactId>
+      <version>5.8.2</version> <!-- Используйте актуальную версию -->
+      <scope>test</scope>
+    </dependency>
   </dependencies>
 
 
@@ -83,5 +89,15 @@
 <!--      <url>https://maven.pkg.github.com/zipepic/Core</url> &lt;!&ndash; Замените на свой GitHub пользователь и репозиторий &ndash;&gt;-->
 <!--    </repository>-->
 <!--  </distributionManagement>-->
+  <distributionManagement>
+    <repository>
+      <id>nexus-releases</id> <!-- Идентификатор репозитория -->
+      <url>http://localhost:8081/repository/maven-releases/</url> <!-- URL вашего Nexus-репозитория -->
+    </repository>
+    <snapshotRepository>
+      <id>nexus-snapshots</id> <!-- Идентификатор репозитория для снепшотов -->
+      <url>http://localhost:8081/repository/maven-snapshots/</url> <!-- URL вашего Nexus-репозитория для снепшотов -->
+    </snapshotRepository>
+  </distributionManagement>
 
 </project>
