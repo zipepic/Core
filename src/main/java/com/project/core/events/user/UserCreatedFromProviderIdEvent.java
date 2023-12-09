@@ -2,6 +2,7 @@ package com.project.core.events.user;
 
 import lombok.Builder;
 import lombok.Data;
+import tokenlib.util.jwk.AuthProvider;
 
 import java.util.Date;
 
@@ -11,7 +12,7 @@ public class UserCreatedFromProviderIdEvent {
     private String userId;
     private String userName;
     private String providerId;
-    private String providerType;
+    private AuthProvider authProvider;
     private String userStatus;
     private String role;
     private Date createdAt;
