@@ -1,5 +1,6 @@
 package com.project.core.commands.token;
 
+import com.project.core.dto.TokenId;
 import lombok.Builder;
 import lombok.Data;
 import org.axonframework.modelling.command.TargetAggregateIdentifier;
@@ -8,7 +9,7 @@ import tokenlib.util.jwk.AuthProvider;
 @Builder
 public class CreateTokenCommand {
     @TargetAggregateIdentifier
-    private String userId;
+    private TokenId tokenFromUserId;
     private String providerId;
     private AuthProvider authProvider;
     private String role;
