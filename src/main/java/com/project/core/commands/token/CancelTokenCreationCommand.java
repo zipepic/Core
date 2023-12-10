@@ -1,5 +1,6 @@
 package com.project.core.commands.token;
 
+import com.project.core.dto.TokenId;
 import lombok.Builder;
 import lombok.Data;
 import org.axonframework.modelling.command.TargetAggregateIdentifier;
@@ -8,6 +9,6 @@ import org.axonframework.modelling.command.TargetAggregateIdentifier;
 @Builder
 public class CancelTokenCreationCommand {
     @TargetAggregateIdentifier
-    private String userId;
+    private TokenId tokenFromUserId;
 
 }
