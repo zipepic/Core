@@ -1,8 +1,6 @@
 package tokenlib.util;
 
-import tokenlib.util.jwk.AppConstants;
 import com.nimbusds.jose.JOSEException;
-import com.project.core.events.user.JwtTokenInfoEvent;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtBuilder;
 import io.jsonwebtoken.Jwts;
@@ -82,7 +80,6 @@ import java.util.Map;
  * <p><strong>See Also:</strong></p>
  * <ul>
  *   <li>{@link tokenlib.util.jwk.AppConstants}</li>
- *   <li>{@link com.project.core.events.user.JwtTokenInfoEvent}</li>
  *   <li>{@link javax.crypto.spec.SecretKeySpec}</li>
  *   <li>{@link tokenlib.util.lamdas.EventClassProvider}</li>
  * </ul>
@@ -131,7 +128,7 @@ public final class JwtManager implements JwtProvider {
   @Override
   public String generateSignedCompactToken(JwtBuilder jwt, String tokenId) {
     return jwt
-      .setIssuer(AppConstants.ISSUER.toString())
+      .setIssuer("http://localhost:8080")
       .setIssuedAt(new Date())
       .signWith(secretKey).compact();
   }

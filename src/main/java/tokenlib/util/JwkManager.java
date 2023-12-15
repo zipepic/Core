@@ -1,7 +1,6 @@
 package tokenlib.util;
 
 import org.axonframework.queryhandling.QueryGateway;
-import tokenlib.util.jwk.AppConstants;
 import tokenlib.util.jwk.RSAParser;
 import tokenlib.util.jwk.SimpleJWK;
 import tokenlib.util.lamdas.EventClassProvider;
@@ -10,7 +9,6 @@ import tokenlib.util.tokenenum.TokenFields;
 import com.nimbusds.jose.JOSEException;
 import com.nimbusds.jose.JWSObject;
 import com.nimbusds.jose.jwk.RSAKey;
-import com.project.core.events.user.JwkTokenInfoEvent;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtBuilder;
 import io.jsonwebtoken.Jwts;
@@ -104,7 +102,6 @@ import java.util.Map;
  *   <li>{@link tokenlib.util.jwk.RSAParser}</li>
  *   <li>{@link tokenlib.util.jwk.SimpleJWK}</li>
  *   <li>{@link org.axonframework.queryhandling.QueryGateway}</li>
- *   <li>{@link com.project.core.events.user.JwkTokenInfoEvent}</li>
  *   <li>{@link tokenlib.util.tokenenum.TokenFields}</li>
  *   <li>{@link tokenlib.util.jwk.AppConstants}</li>
  * </ul>
@@ -223,7 +220,7 @@ public final class JwkManager implements JwkProvider {
   @Override
   public String generateSignedCompactToken(JwtBuilder jwt, String kid, KeyPair keyPair) {
     return jwt
-      .setIssuer(AppConstants.ISSUER.toString())
+      .setIssuer("http://localhost:8080")
       .setIssuedAt(new Date())
       .setHeader(Map.of(TokenFields.KID.getValue(), kid))
       .signWith(keyPair.getPrivate()).compact();

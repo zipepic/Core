@@ -1,6 +1,5 @@
 package tokenlib.util.tokenenum;
 
-import org.springframework.context.annotation.Configuration;
 
 import java.util.Date;
 public enum TokenExpiration {
